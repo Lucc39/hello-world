@@ -1,0 +1,34 @@
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+public class Input
+{
+
+	public static void main(String[] args)
+	{
+		Scanner scanner = new Scanner(System.in);
+		
+		List<Float> score = new ArrayList<>();
+		
+		System.out.println("How many grade scores would you like to check?");
+		int gradeAmount = scanner.nextInt();
+		
+		System.out.println("What's the first grade score?");
+		score.add(scanner.nextFloat());
+		
+		for (int i = 0; i < gradeAmount-1; i++) {
+			System.out.println("What's the next grade score?");
+			score.add(scanner.nextFloat());
+		}
+		
+		float total = 0;
+		for(float element : score) 
+		{
+			total += element;
+		}
+		
+		float average = total / score.size();
+		System.out.println("Your grade score average is "+average+".");
+	}
+}
