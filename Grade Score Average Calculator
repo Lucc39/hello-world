@@ -118,11 +118,26 @@ public class Main {
 			System.out.println("What's the first score?");
 			score.add(scanner.nextFloat());
 
-			if (score.get(0) >= 0) {
-				for (int i = 0; i < gradeAmount-1; i++) {
+			while(score.get(0) < 0) {
+				score.remove(0);
+				System.out.println("Invalid score entered. Please try again.");
+				score.add(scanner.nextFloat());
+			}
+
+			while (score.get(0) >= 0) {
+				for (int i = 1; i <= gradeAmount; i++) {
 					System.out.println("What's the next score?");
 					score.add(scanner.nextFloat());
-					if (score.get(i) >= 0) {
+					
+					System.out.println(score.get(i));
+					while (score.get(i) < 0) {
+						score.remove(i);
+						System.out.println("Invalid score entered. Please try again.");
+						score.add(scanner.nextFloat());
+					}
+
+					while (score.get(i) >= 0) {
+						
 						float total = 0;
 
 						for(float element : score) {
@@ -132,19 +147,13 @@ public class Main {
 						float average = total / score.size();
 						System.out.println("Your grade score average is "+average+".");
 						return;
-
-					} else {
-						score.remove(i);
-						System.out.println("Invalid score entered. Please try again.");
-						score.add(scanner.nextFloat());
 					}
+
 				}
-			} else {	
-				score.remove(0);
-				System.out.println("Invalid score entered. Please try again.");
-				score.add(scanner.nextFloat());
-			}
-		} 
+
+			}	
+
+		}
 
 	}
 
