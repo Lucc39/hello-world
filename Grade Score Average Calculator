@@ -158,3 +158,132 @@ public class Main {
 	}
 
 }
+
+
+//with sorting alogirthm:
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+public class Main {
+
+	public static void main(String[] args) 
+	{
+
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("How many grade scores would you like to check?");
+		int gradeAmount = scanner.nextInt();
+		ArrayList<Float> score = new ArrayList<Float>();
+
+		while (gradeAmount <= 0)
+		{
+			System.out.println("Invalid number entered. Please try again.");
+			gradeAmount = scanner.nextInt();
+		}
+		if (gradeAmount > 0) 
+		{
+			System.out.println("I will now calculate the average of "+gradeAmount+" grade scores.");
+
+			System.out.println("What's the first score?");
+			score.add(scanner.nextFloat());
+
+			while(score.get(0) < 0) 
+			{
+				score.remove(0);
+				System.out.println("Invalid score entered. Please try again.");
+				score.add(scanner.nextFloat());
+			}
+
+			while (score.get(0) >= 0) 
+			{
+				System.out.println("Grade 1 score: "+score.get(0));
+
+				for (int i = 1; i <= gradeAmount; i++)
+				{
+					System.out.println("What's the next score?");
+					score.add(scanner.nextFloat());
+
+					while (score.get(i) < 0)
+					{
+						score.remove(i);
+						System.out.println("Invalid score entered. Please try again.");
+						score.add(scanner.nextFloat());
+
+					}
+
+					System.out.println("");
+					int gradeNumber = i+1;
+					if(score.get(i) >= 0 ) 
+					{
+						List<Float> sublist = score.subList(1, score.size());
+						System.out.println("Grade 1 score: "+score.get(0));
+						int temp = 2;
+						for(Float sl : sublist)
+						{
+							gradeNumber = temp;
+							System.out.print("Grade "+gradeNumber+" score: ");
+							System.out.println(sl);
+							temp = gradeNumber + 1;
+							
+						}
+					}
+
+					System.out.println("");
+					if(gradeAmount+1 == score.size()+1) 
+					{
+						float total = 0;
+						for(float element : score) 
+						{
+							total += element;
+						}
+						System.out.println("Your grade score total is "+total+".");
+
+						float average = total / score.size();
+						System.out.println("Your grade score average is "+average+".");
+						
+						
+						float temp;
+						boolean sorted = false;
+						while (sorted == false) 
+						{
+							sorted = true;
+							
+							for(int n = 0; n < score.size() -1; n++) 
+							{
+								if(score.get(n) > score.get(n+1)) 
+								{
+									temp = score.get(n+1);
+									score.set(n+1, score.get(n));
+									score.set(n, temp);
+									sorted = false;
+								}
+							}
+						}
+						
+						System.out.println("");
+						System.out.println("Theese are your grades ranked from worst to best: ");
+						System.out.print("Worst grade: ");
+						for(int n = 0; n < score.size(); n++)
+						{
+							if(n == score.size() -1)
+							{
+								System.out.print("Best grade: ");
+							}
+							System.out.println(score.get(n));
+						}
+						return;	
+						
+					
+
+					}
+
+				}
+
+			}
+
+		}	
+
+	}
+
+}
