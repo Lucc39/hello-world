@@ -15,6 +15,7 @@ public class Main {
 		int gradeAmount = scanner.nextInt();
 		ArrayList<Float> score = new ArrayList<Float>();
 
+		//The following function will make sure that you entered a positive integer
 		while (gradeAmount <= 0)
 		{
 			System.out.println("Invalid number entered. Please try again.");
@@ -27,6 +28,7 @@ public class Main {
 			System.out.println("What's the first score?");
 			score.add(scanner.nextFloat());
 
+			//The following function will make sure that you entered a positive integer
 			while(score.get(0) < 0) 
 			{
 				score.remove(0);
@@ -43,6 +45,7 @@ public class Main {
 					System.out.println("What's the next score?");
 					score.add(scanner.nextFloat());
 
+					//The following function will make sure that you entered a positive integer
 					while (score.get(i) < 0)
 					{
 						score.remove(i);
@@ -52,10 +55,12 @@ public class Main {
 					}
 
 					System.out.println("");
-					int gradeNumber = i+1;
 					if(score.get(i) >= 0 ) 
 					{
+						//The following function will display the grades you have already entered
+						int gradeNumber = i+1;
 						List<Float> sublist = score.subList(1, score.size());
+						
 						System.out.println("Grade 1 score: "+score.get(0));
 						int temp = 2;
 						for(Float sl : sublist)
@@ -76,12 +81,14 @@ public class Main {
 						{
 							total += element;
 						}
+						
 						System.out.println("Your grade score total is "+total+".");
 
 						float average = total / score.size();
 						System.out.println("Your grade score average is "+average+".");
 						
 						
+						//This is a basic bubble sorting algorithm that will rank the grades from best to worst
 						float temp;
 						boolean sorted = false;
 						while (sorted == false) 
