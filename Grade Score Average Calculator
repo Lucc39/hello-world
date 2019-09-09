@@ -251,24 +251,24 @@ public class Main {
 							
 							for(int n = 0; n < score.size() -1; n++) 
 							{
-								if(score.get(n) > score.get(n+1)) 
+								if(score.get(n+1) > score.get(n)) 
 								{
-									temp = score.get(n+1);
-									score.set(n+1, score.get(n));
-									score.set(n, temp);
+									temp = score.get(n);
+									score.set(n, score.get(n+1));
+									score.set(n+1, temp);
 									sorted = false;
 								}
 							}
 						}
 						
 						System.out.println("");
-						System.out.println("Theese are your grades ranked from worst to best: ");
-						System.out.print("Worst grade: ");
+						System.out.println("Theese are your grades ranked from best to worst: ");
+						System.out.print("Best grade - ");
 						for(int n = 0; n < score.size(); n++)
 						{
 							if(n == score.size() -1)
 							{
-								System.out.print("Best grade: ");
+								System.out.print("Worst grade - ");
 							}
 							System.out.println(score.get(n));
 						}
