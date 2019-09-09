@@ -1,166 +1,5 @@
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
+//Updated version:
 
-public class Input
-{
-
-	public static void main(String[] args)
-	{
-		Scanner scanner = new Scanner(System.in);
-		
-		List<Float> score = new ArrayList<>();
-		
-		System.out.println("How many grade scores would you like to check?");
-		int gradeAmount = scanner.nextInt();
-		
-		System.out.println("What's the first grade score?");
-		score.add(scanner.nextFloat());
-		
-		for (int i = 0; i < gradeAmount-1; i++) {
-			System.out.println("What's the next grade score?");
-			score.add(scanner.nextFloat());
-		}
-		
-		float total = 0;
-		for(float element : score) 
-		{
-			total += element;
-		}
-		
-		float average = total / score.size();
-		System.out.println("Your grade score average is "+average+".");
-	}
-}
-
-
-
-//if else version (not working):
-
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
-
-public class Main {
-
-	public static void main(String[] args) {
-		
-		Scanner scanner = new Scanner(System.in);
-		
-		System.out.println("How many grade scores would you like to check?");
-		int gradeAmount = scanner.nextInt();
-		ArrayList<Float> score = new ArrayList<Float>();
-			
-			if (gradeAmount > 0) {
-				System.out.println("I will now calculate the average of "+gradeAmount+" grade scores.");
-				
-				System.out.println("What's the first score?");
-				score.add(scanner.nextFloat());
-			
-			if (score.get(0) >= 0) {
-				for (int i = 0; i < gradeAmount-1; i++) {
-				System.out.println("What's the next score?");
-				score.add(scanner.nextFloat());
-				if (score.get(i) >= 0) {
-					float total = 0;
-					
-					for(float element : score) {
-						total += element;
-					}
-					
-					float average = total / score.size();
-					System.out.println("Your grade score average is "+average+".");
-					return;
-					
-					} else {
-						score.remove(i);
-						System.out.println("Invalid score entered. Please try again.");
-						score.add(scanner.nextFloat());
-					}
-					}
-			} else {	
-					score.remove(0);
-					System.out.println("Invalid score entered. Please try again.");
-					score.add(scanner.nextFloat());
-					}
-			} else {
-				System.out.println("Invalid number entered. Please try again.");
-				gradeAmount = scanner.nextInt();
-			}
-			
-	}
-
-}
-
-
-//while loop version (start)
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
-
-public class Main {
-
-	public static void main(String[] args) {
-
-		Scanner scanner = new Scanner(System.in);
-
-		System.out.println("How many grade scores would you like to check?");
-		int gradeAmount = scanner.nextInt();
-		ArrayList<Float> score = new ArrayList<Float>();
-
-		while (gradeAmount <= 0){
-			System.out.println("Invalid number entered. Please try again.");
-			gradeAmount = scanner.nextInt();
-		}
-		if (gradeAmount > 0) {
-			System.out.println("I will now calculate the average of "+gradeAmount+" grade scores.");
-
-			System.out.println("What's the first score?");
-			score.add(scanner.nextFloat());
-
-			while(score.get(0) < 0) {
-				score.remove(0);
-				System.out.println("Invalid score entered. Please try again.");
-				score.add(scanner.nextFloat());
-			}
-
-			while (score.get(0) >= 0) {
-				for (int i = 1; i <= gradeAmount; i++) {
-					System.out.println("What's the next score?");
-					score.add(scanner.nextFloat());
-					
-					System.out.println(score.get(i));
-					while (score.get(i) < 0) {
-						score.remove(i);
-						System.out.println("Invalid score entered. Please try again.");
-						score.add(scanner.nextFloat());
-					}
-
-					while (score.get(i) >= 0) {
-						
-						float total = 0;
-
-						for(float element : score) {
-							total += element;
-						}
-
-						float average = total / score.size();
-						System.out.println("Your grade score average is "+average+".");
-						return;
-					}
-
-				}
-
-			}	
-
-		}
-
-	}
-
-}
-
-
-//with sorting alogirthm:
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
@@ -286,4 +125,68 @@ public class Main {
 
 	}
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Original version:
+
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
+public class Input
+{
+
+	public static void main(String[] args)
+	{
+		Scanner scanner = new Scanner(System.in);
+		
+		List<Float> score = new ArrayList<>();
+		
+		System.out.println("How many grade scores would you like to check?");
+		int gradeAmount = scanner.nextInt();
+		
+		System.out.println("What's the first grade score?");
+		score.add(scanner.nextFloat());
+		
+		for (int i = 0; i < gradeAmount-1; i++) {
+			System.out.println("What's the next grade score?");
+			score.add(scanner.nextFloat());
+		}
+		
+		float total = 0;
+		for(float element : score) 
+		{
+			total += element;
+		}
+		
+		float average = total / score.size();
+		System.out.println("Your grade score average is "+average+".");
+	}
 }
