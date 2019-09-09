@@ -119,9 +119,6 @@ public class Main {
 							System.out.println(score.get(n));
 						}
 						return;	
-						
-					
-
 					}
 
 				}
