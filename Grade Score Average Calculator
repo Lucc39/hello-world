@@ -1,30 +1,35 @@
 //Updated version:
 
 import java.util.Scanner;
+import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Main {
-
+public class Main 
+{
+	static ArrayList<Float> score = new ArrayList<Float>();
+	static Scanner scanner = new Scanner(System.in);
+	static void invScore()
+	{
+		System.out.println("Invalid score entered. Please try again.");
+		score.add(scanner.nextFloat());
+	}
+	
 	public static void main(String[] args) 
 	{
-
-		Scanner scanner = new Scanner(System.in);
-
 		System.out.println("How many grade scores would you like to check?");
 		int gradeAmount = scanner.nextInt();
-		ArrayList<Float> score = new ArrayList<Float>();
 
 		//The following function will make sure that you entered a positive integer
-		while (gradeAmount <= 0)
+		while (	gradeAmount <= 0)
 		{
 			System.out.println("Invalid number entered. Please try again.");
 			gradeAmount = scanner.nextInt();
 		}
+
 		if (gradeAmount > 0) 
 		{
 			System.out.println("I will now calculate the average of "+gradeAmount+" grade scores.");
-
 			System.out.println("What's the first score?");
 			score.add(scanner.nextFloat());
 
@@ -32,8 +37,7 @@ public class Main {
 			while(score.get(0) < 0) 
 			{
 				score.remove(0);
-				System.out.println("Invalid score entered. Please try again.");
-				score.add(scanner.nextFloat());
+				invScore();
 			}
 
 			while (score.get(0) >= 0) 
@@ -49,9 +53,7 @@ public class Main {
 					while (score.get(i) < 0)
 					{
 						score.remove(i);
-						System.out.println("Invalid score entered. Please try again.");
-						score.add(scanner.nextFloat());
-
+						invScore();
 					}
 
 					System.out.println("");
@@ -60,16 +62,14 @@ public class Main {
 						//The following function will display the grades you have already entered
 						int gradeNumber = i+1;
 						List<Float> sublist = score.subList(1, score.size());
-						
+
 						System.out.println("Grade 1 score: "+score.get(0));
 						int temp = 2;
 						for(Float sl : sublist)
 						{
-							gradeNumber = temp;
-							System.out.print("Grade "+gradeNumber+" score: ");
+							System.out.print("Grade "+temp+" score: ");
 							System.out.println(sl);
-							temp = gradeNumber + 1;
-							
+							temp += 1;
 						}
 					}
 
@@ -81,20 +81,20 @@ public class Main {
 						{
 							total += element;
 						}
-						
+
 						System.out.println("Your grade score total is "+total+".");
 
 						float average = total / score.size();
 						System.out.println("Your grade score average is "+average+".");
-						
-						
+
+
 						//This is a basic bubble sorting algorithm that will rank the grades from best to worst
 						float temp;
 						boolean sorted = false;
 						while (sorted == false) 
 						{
 							sorted = true;
-							
+
 							for(int n = 0; n < score.size() -1; n++) 
 							{
 								if(score.get(n+1) > score.get(n)) 
@@ -106,7 +106,7 @@ public class Main {
 								}
 							}
 						}
-						
+
 						System.out.println("");
 						System.out.println("Theese are your grades ranked from best to worst: ");
 						System.out.print("Best grade - ");
